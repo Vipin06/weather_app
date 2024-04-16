@@ -91,9 +91,9 @@ function SignUpModel() {
 
     useEffect(() => {
         console.log("apiResult",apiResult)
-        if (apiResult && apiResult.error) {
+        if (apiResult?.error) {
             alert['show'] = true
-            alert['message'] = apiResult.error
+            alert['message'] = apiResult?.error?.message ? apiResult?.error?.message : apiResult.error
             alert['variant'] = "danger"
             setApiError(apiResult.error)
             setLoading(false)

@@ -16,6 +16,7 @@ function SignInModel() {
     const [errorApi, setErrorApi] = useState(false);
     const [apiError, setApiError] = useState('')
     const apiResult = useSelector(state => state.auth);
+    console.log("apiResult",apiResult)
 
     const handleChangeInput = (e) => {
         const { name, value } = e.target;
@@ -63,9 +64,9 @@ function SignInModel() {
 
     useEffect(() => {
         if (errorApi) {
-            if (apiResult.error) {
+            if (apiResult?.error) {
                 alert['show'] = true
-                alert['message'] = apiResult.error
+                alert['message'] = apiResult?.error?.message ? apiResult?.error?.message : apiResult.error
                 alert['variant'] = "danger"
                 setApiError(apiResult.error)
             }
